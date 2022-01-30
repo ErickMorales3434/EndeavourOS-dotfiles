@@ -1,0 +1,310 @@
+;==========================================================
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;==========================================================
+
+[colors]
+;background_bar = #00000000
+; background = #
+foreground = #FFFFFF
+primary = #FFFFFF
+secondary = #F29999
+alert = #FFFFFF
+
+;------------------BARRA SUPERIOR -----------------------
+[bar/bar]
+bottom = false
+;monitor = VGA-1
+; background = ${colors.background_bar}
+foreground = ${colors.foreground}
+background = #000000
+; background-1 = #38373D
+; background-2 = #414046
+; background-3 = #58575D
+; background-4 = #6E6D73
+; background-5 = #818086
+; background-6 = #908F95
+; background-7 = #9D9CA2
+; background-8 = #9D9CA2
+; background-9 = #9D9CA2
+; ; background-10 = #9D9CA1
+; ; background-11 = #9D9CA1
+; ; background-12 = #9D9CA1
+
+;             fonts text
+; fc-list | greo -i nombre de fuente
+font-0 = "Roboto:size=10:style=Bold Italic;2:antialias=true"
+;             fonts border bar
+;font-1 = "SFMono Nerd Font:style=Solid:pixelsize=50:antialias=true;0"
+;             fonts icons
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;2"
+font-2 = "Font Awesome 5 Brands:pixelsize=12;3"
+font-3 = "Font Awesome 5 Pro:Solid:pixelsize=12"
+
+wm-restack = bspwm
+override-redirect =false
+fixed-center = false
+width = 100%
+height = 22
+offset-y = 0
+offset-x = 0
+line-size = 2
+tray-position = right
+tray-padding = 5
+tray-detached = false
+; tray-background = #00000000
+
+border-bottom-size = 2
+border-color = #2F7CC4
+
+modules-left = rofi space bspwm title 
+; modules-center =   
+modules-right = space date space pulseaudio space memory space network space xkeyboard space powermenu
+
+;------------------Inicio de modulos -----------------------
+;            
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+
+enable-click = true
+enable-scroll = true
+
+label-active = %name%
+label-active-underline= #C3CFDD
+label-active-padding = 2
+label-active-foreground = ${colors.primary}
+label-active-background = #2F7CC2
+
+label-occupied = %name% 
+label-occupied-foreground = ${colors.secondary}
+label-occupied-background = ${colors.background-bspwm}
+label-occupied-padding = 2
+label-occupied-underline= #3883BD
+
+
+
+label-urgent = %name%
+label-urgent-padding = 2
+label-urgent-foreground = ${colors.alert}
+label-urgent-background = ${colors.background-bspwm}
+
+label-empty = %name%
+label-empty-padding = 2
+label-empty-foreground = ${colors.foreground}
+label-empty-background = ${colors.background-bspwm}
+;---------------------------------------------------------------------
+[module/div]
+type = custom/text
+content-font = 0
+content = 
+content-background = ${colors.background}
+
+
+[module/space]
+type = custom/text
+content-font = 0
+content = "     "
+content-background = ${colors.background}
+
+
+[module/close]
+type = custom/text
+content = "◤"
+content-font = 1
+content-foreground = ${colors.background}
+;content-background = ${colors.background}
+
+[module/open]
+type = custom/text
+content = "◢" 
+content-font =1
+content-padding = 0
+content-foreground = ${colors.background}
+;content-background = ${colors.background}
+
+
+[module/microfono]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/micro.bash
+tail = true
+format = <label>
+label = %output%
+format-background = ${colors.background}
+click-left = amixer set Capture toggle 
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+use-ui-max = false
+interval = 2
+format-volume = <ramp-volume> <label-volume>
+format-volume-background = ${colors.background}
+format-volume-foreground = #F7F7F7
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+label-muted = 
+label-muted-foreground = #FF0000
+label-muted-background = ${colors.background}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+format = <label-layout>
+label-layout = %{A1:setxkbmap latam:}%{A1:setxkbmap us:}  %{A} %icon%%{A}
+label-layout-font = 0
+label-layout-padding = 1
+label-layout-background = ${colors.background}
+label-layout-foreground = ${colors.foreground}
+layout-icon-0 = latam;LAT
+layout-icon-1 = us;US
+
+
+[module/xkeyboards]
+type=custom/text
+interval = 2
+click-left = echo %setxkbmap latam%
+click-right = setxkbmap us
+;click-middle = 
+content-font = 0
+content-margin = 0
+content-background = ${colors.background}
+content-foreground = ${colors.foreground}
+label-indicator-on = +%name%
+
+[module/date]
+type = internal/date
+; Seconds to sleep between updates
+interval = 1.0
+format = <label>
+;date = %d-%m-%Y%
+; date = %a,%b %d
+;time = %H:%M
+time = %I:%M %p
+
+date-alt =  %A, %d %B %Y
+time-alt = %I:%M %p
+; format-gradient = true
+format-background = ${colors.background}
+format-foreground-0 = #FFD0CA
+format-foreground-1 = #FFDdCA
+format-foreground-2 = #FFs0CA
+
+label =  %date%  %time%
+label-font = 0
+
+[module/myscript]
+type=custom/text
+content = 
+content-font = 0
+content-margin = 0
+click-left=clearine
+content-background = ${colors.background}
+content-foreground = #BF045B
+
+[module/rofi]
+type=custom/text
+content = "     "  
+click-left= rofi -modi run -show drun -show-icons \-config $HOME/.config/rofi/Monokai.rasi
+content-foreground = #FFFFFF
+content-background = #2F7CC4
+
+
+[module/title]
+type = internal/xwindow
+format = <label>
+format-font = 0
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-padding = 2
+label =  %title%
+label-maxlen = 39
+label-empty = Empty
+; label-empty-foreground = ${colors.foreground}
+
+
+[module/network]
+type = internal/network
+interface = enp3s0
+format-font = 0
+label-connected =  %downspeed% 
+label-connected-background = ${colors.background}
+label-connected-foreground = ${colors.foreground}
+label-disconnected = not connected
+label-disconnected-foreground = #FF0000
+label-disconnected-background = ${colors.background}
+
+[module/memory]
+type = internal/memory
+interval = 1
+label =  %gb_used%
+label-background = ${colors.background}
+label-foreground = #FEFAE1
+
+[module/player]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/musica.sh
+interval = 3
+click-left = playerctl previous &
+click-right = playerctl next &
+click-middle = playerctl play-pause &
+format = <label>
+label-maxlen = 30
+label = %output%
+format-background = ${colors.background}
+format-foreground = #898F9D
+
+[module/monitors]
+type = custom/script
+exec = xrandr --listactivemonitors | grep -c 0
+internal = 3
+click-right = xrandr --output HDMI-1 --off 
+click-left = xrandr --output HDMI-1 --auto --right-of VGA-1 --rotate normal
+format =   <label>
+label = %output%
+format-background = ${colors.background}
+format-foreground = #A0EDFF
+
+[module/powermenu]
+type = custom/menu
+
+; Padding doesn't seem to be working
+label-open = "   "
+label-open-foreground = ${colors.icon}
+label-open-background = #2F7CC4
+label-close =  cancel
+label-close-foreground = ${colors.icon}
+label-separator = "  |  "
+
+menu-0-0 = reboot
+menu-0-0-exec = reboot
+menu-0-1 = shutdown
+menu-0-1-exec = shutdown now
+menu-0-2 = quit session
+menu-0-2-exec = bspc quit
+
+
+; menu-1-0 = cancel
+; menu-1-0-exec = menu-open-0
+; menu-1-1 = reboot
+; menu-1-1-exec = reboot
+
+; menu-2-0 = power off
+; menu-2-0-exec = terminator -e 'sudo shutdown now'
+; menu-2-1 = cancel
+; menu-2-1-exec = menu-open-0
+
+[settings]   
+pseudo-transparency = true
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
