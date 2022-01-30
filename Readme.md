@@ -1,0 +1,1 @@
+# Scrip install bspwm in EndeavourOS
