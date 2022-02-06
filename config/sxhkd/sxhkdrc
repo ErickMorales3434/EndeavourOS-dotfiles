@@ -129,8 +129,8 @@ alt + g
 
 #mostrar y ocultar polybar
 alt + m
-	{~/.config/polybar/launch.sh ,killall polybar && bspc config top_padding 0}
-	# {~/.config/polybar/launch.sh ,killall polybar && bspc config bottom_padding 0}
+	{~/.config/polybar/launch.sh ,killall polybar && bspc config bottom_padding 0}
+	# {~/.config/polybar/launch.sh ,killall polybar && bspc config top_padding 0}
 
 
 #pywal reconoce el color del fondo de pantalla y cambia los colores de la terminal

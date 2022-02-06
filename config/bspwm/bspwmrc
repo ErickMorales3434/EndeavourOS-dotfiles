@@ -42,5 +42,5 @@ picom &
 dunst &
 numlockx
 xsetroot -cursor_name left_ptr
-tilix -e "neofetch"
+tilix
 

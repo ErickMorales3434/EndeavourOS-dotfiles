@@ -19,7 +19,7 @@ alert = #FFFFFF
 
 ;------------------BARRA SUPERIOR -----------------------
 [bar/bar]
-bottom = false
+bottom = true
 ;monitor = VGA-1
 ; background = ${colors.background_bar}
 foreground = ${colors.foreground}
@@ -55,9 +55,9 @@ height = 22
 offset-y = 0
 offset-x = 0
 line-size = 2
-tray-position = right
-tray-padding = 5
-tray-detached = false
+; tray-position = right
+; tray-padding = 5
+; tray-detached = false
 ; tray-background = #00000000
 
 border-bottom-size = 2

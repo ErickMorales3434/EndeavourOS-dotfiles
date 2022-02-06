@@ -9,6 +9,9 @@ Plug 'vim-airline/vim-airline-themes'  " Temas para airline
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 "Plug 'sheerun/vim-polyglot'
+
+
+
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
