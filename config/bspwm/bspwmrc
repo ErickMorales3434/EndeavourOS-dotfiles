@@ -29,7 +29,9 @@ bspc rule -a TelegramDesktop desktop='^4' state=floating
 # bspc rule -a Screenkey manage=off
 
 
-# close all apps 
+# close all apps
+~/.config/polybar/launch.sh
+
 killall polybar
 killall dunst
 killall picom
