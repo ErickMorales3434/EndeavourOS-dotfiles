@@ -37,7 +37,7 @@ killall feh
 
 # start apps
 ~/.config/polybar/launch.sh
-feh --bg-scale ~/Wall/2.jpg
+feh --bg-scale ~/Wall/1.png
 picom &
 dunst &
 numlockx
