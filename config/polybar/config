@@ -10,42 +10,28 @@
 ;==========================================================
 
 [colors]
-;background_bar = #00000000
-; background = #
+background = #00000000
 foreground = #FFFFFF
 primary = #FFFFFF
-secondary = #F29999
-alert = #FFFFFF
+secondary = #FFFFFF
+alert = #FF0000
 
 ;------------------BARRA SUPERIOR -----------------------
 [bar/bar]
-bottom = true
+bottom = false
 ;monitor = VGA-1
-; background = ${colors.background_bar}
 foreground = ${colors.foreground}
-background = #000000
-; background-1 = #38373D
-; background-2 = #414046
-; background-3 = #58575D
-; background-4 = #6E6D73
-; background-5 = #818086
-; background-6 = #908F95
-; background-7 = #9D9CA2
-; background-8 = #9D9CA2
-; background-9 = #9D9CA2
-; ; background-10 = #9D9CA1
-; ; background-11 = #9D9CA1
-; ; background-12 = #9D9CA1
+background = ${colors.background}
 
 ;             fonts text
 ; fc-list | greo -i nombre de fuente
-font-0 = "Roboto:size=10:style=Bold Italic;2:antialias=true"
+font-0 = "Roboto:size=10.5:style=Bold Italic;2:antialias=true"
 ;             fonts border bar
 ;font-1 = "SFMono Nerd Font:style=Solid:pixelsize=50:antialias=true;0"
 ;             fonts icons
-font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;2"
-font-2 = "Font Awesome 5 Brands:pixelsize=12;3"
-font-3 = "Font Awesome 5 Pro:Solid:pixelsize=12"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=10;2"
+font-2 = "Font Awesome 5 Brands:pixelsize=10;3"
+font-3 = "Font Awesome 5 Pro:Solid:pixelsize=10"
 
 wm-restack = bspwm
 override-redirect =false
@@ -54,18 +40,18 @@ width = 100%
 height = 22
 offset-y = 0
 offset-x = 0
-line-size = 2
-; tray-position = right
-; tray-padding = 5
-; tray-detached = false
-; tray-background = #00000000
+line-size = 3
+tray-position = right
+tray-padding = 5
+tray-detached = false
+tray-background = #00000000
 
-border-bottom-size = 2
-border-color = #2F7CC4
+; border-bottom-size = 2
+; border-color = #2F7CC4
 
-modules-left = rofi space bspwm title 
-; modules-center =   
-modules-right = space date space pulseaudio space memory space network space xkeyboard space powermenu
+modules-left = rofi space bspwm
+modules-center = title
+modules-right = space date space memory space network space xkeyboard space powermenu
 
 ;------------------Inicio de modulos -----------------------
 ;            
@@ -81,15 +67,13 @@ label-active = %name%
 label-active-underline= #C3CFDD
 label-active-padding = 2
 label-active-foreground = ${colors.primary}
-label-active-background = #2F7CC2
+label-active-background = #57AAF2
 
 label-occupied = %name% 
 label-occupied-foreground = ${colors.secondary}
 label-occupied-background = ${colors.background-bspwm}
 label-occupied-padding = 2
-label-occupied-underline= #3883BD
-
-
+; label-occupied-underline= #3883BD
 
 label-urgent = %name%
 label-urgent-padding = 2
@@ -98,7 +82,7 @@ label-urgent-background = ${colors.background-bspwm}
 
 label-empty = %name%
 label-empty-padding = 2
-label-empty-foreground = ${colors.foreground}
+label-empty-foreground = #565759
 label-empty-background = ${colors.background-bspwm}
 ;---------------------------------------------------------------------
 [module/div]
@@ -131,15 +115,6 @@ content-foreground = ${colors.background}
 ;content-background = ${colors.background}
 
 
-[module/microfono]
-type = custom/script
-exec = $HOME/.config/polybar/scripts/micro.bash
-tail = true
-format = <label>
-label = %output%
-format-background = ${colors.background}
-click-left = amixer set Capture toggle 
-
 [module/pulseaudio]
 type = internal/pulseaudio
 sink = alsa_output.pci-0000_12_00.3.analog-stereo
@@ -158,7 +133,8 @@ label-muted-background = ${colors.background}
 [module/xkeyboard]
 type = internal/xkeyboard
 format = <label-layout>
-label-layout = %{A1:setxkbmap latam:}%{A1:setxkbmap us:}  %{A} %icon%%{A}
+label-layout =  %icon%
+; label-layout = %{A1:setxkbmap latam:}%{A1:setxkbmap us:}  %{A} %icon%%{A}
 label-layout-font = 0
 label-layout-padding = 1
 label-layout-background = ${colors.background}
@@ -166,18 +142,6 @@ label-layout-foreground = ${colors.foreground}
 layout-icon-0 = latam;LAT
 layout-icon-1 = us;US
 
-
-[module/xkeyboards]
-type=custom/text
-interval = 2
-click-left = echo %setxkbmap latam%
-click-right = setxkbmap us
-;click-middle = 
-content-font = 0
-content-margin = 0
-content-background = ${colors.background}
-content-foreground = ${colors.foreground}
-label-indicator-on = +%name%
 
 [module/date]
 type = internal/date
@@ -200,14 +164,14 @@ format-foreground-2 = #FFs0CA
 label =  %date%  %time%
 label-font = 0
 
-[module/myscript]
-type=custom/text
-content = 
-content-font = 0
-content-margin = 0
-click-left=clearine
-content-background = ${colors.background}
-content-foreground = #BF045B
+; [module/myscript]
+; type=custom/text
+; content = 
+; content-font = 0
+; content-margin = 0
+; click-left=clearine
+; content-background = ${colors.background}
+; content-foreground = #BF045B
 
 [module/rofi]
 type=custom/text
@@ -226,7 +190,7 @@ format-foreground = ${colors.foreground}
 format-padding = 2
 label =  %title%
 label-maxlen = 39
-label-empty = Empty
+label-empty = 
 ; label-empty-foreground = ${colors.foreground}
 
 
@@ -247,30 +211,6 @@ interval = 1
 label =  %gb_used%
 label-background = ${colors.background}
 label-foreground = #FEFAE1
-
-[module/player]
-type = custom/script
-exec = $HOME/.config/polybar/scripts/musica.sh
-interval = 3
-click-left = playerctl previous &
-click-right = playerctl next &
-click-middle = playerctl play-pause &
-format = <label>
-label-maxlen = 30
-label = %output%
-format-background = ${colors.background}
-format-foreground = #898F9D
-
-[module/monitors]
-type = custom/script
-exec = xrandr --listactivemonitors | grep -c 0
-internal = 3
-click-right = xrandr --output HDMI-1 --off 
-click-left = xrandr --output HDMI-1 --auto --right-of VGA-1 --rotate normal
-format =   <label>
-label = %output%
-format-background = ${colors.background}
-format-foreground = #A0EDFF
 
 [module/powermenu]
 type = custom/menu
