@@ -1,7 +1,7 @@
 echo "Instalando bspwm"
 sleep 5
 # Instalar programas de pacman 
-sudo pacman -S htop tilix rofi bspwm sxhkd polybar feh xorg-xsetroot numlockx neovim cmus lightdm lightdm-gtk-greeter scrot lxappearance-gtk3 virtualbox telegram-desktop nautilus python-pynvim obs-studio playerctl vlc gparted nitrogen volumeicon zshrc
+sudo pacman -S htop tilix rofi bspwm sxhkd polybar feh xorg-xsetroot numlockx neovim cmus lightdm lightdm-gtk-greeter scrot lxappearance-gtk3 virtualbox telegram-desktop nautilus python-pynvim obs-studio playerctl vlc gparted nitrogen volumeicon zsh
 
 # Instalar programas de aur
 yay -S google-chrome
