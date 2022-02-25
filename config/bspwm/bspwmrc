@@ -21,6 +21,7 @@ bspc rule -a Google-chrome desktop='^2' follow=on
 bspc rule -a Org.gnome.Nautilus desktop='^3' follow=on
 bspc rule -a TelegramDesktop desktop='^5' state=floating follow=on
 bspc rule -a vlc desktop='^6' follow=on
+bspc rule -a obs desktop='^4' follow=on
 
 # bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a telegram-desktop desktop='^2'
@@ -37,8 +38,8 @@ killall picom
 
 # start apps
 ~/.config/polybar/launch.sh
-# feh --bg-scale ~/Wall/1.png
-nitrogen --restore
+feh --bg-scale ~/Wall/kitten.jpg
+#nitrogen --restore
 picom &
 volumeicon &
 numlockx
