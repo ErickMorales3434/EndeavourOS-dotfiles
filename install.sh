@@ -8,9 +8,9 @@ sudo pacman -S kitty rofi bspwm sxhkd polybar picom feh xorg-xsetroot numlockx n
 # Instalar programas de aur
 yay -S google-chrome
 yay -S visual-studio-code-bin 
-sleep 5
+sleep 3
 echo "Instalacion completada"
-sleep 5
+sleep 3
 
 sudo systemctl enable lightdm
 
