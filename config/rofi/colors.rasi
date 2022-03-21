@@ -1,0 +1,27 @@
+/* -- Gray -- */
+
+* {
+shade1: #00000080;
+shade2: #BFB2AA;
+shade3: #00000080;
+shade4: #F29999;
+shade5: #F2CDAC;
+shade6: #FFFFFF;
+shade7: #000000;
+shade8: #353535;
+}
+
+/**** Comment One First To Use Another ****/
+
+/* -- Dark -- */
+* {
+    background:                     @shade1;
+    foreground:                     @shade2;
+    background-alt:                 @shade3;
+    foreground-alt:                 @shade4;
+    selected:               		@shade5;
+    foreground-entry:               @shade6;
+    selected-fg:                    @shade7;
+}
+
+

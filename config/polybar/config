@@ -18,6 +18,7 @@ alert = #FF0000
 
 ;------------------BARRA SUPERIOR -----------------------
 [bar/bar]
+enable-ipc = true
 bottom = false
 ;monitor = VGA-1
 foreground = ${colors.foreground}
@@ -46,8 +47,8 @@ tray-padding = 5
 tray-detached = false
 tray-background = #00000000
 
-; border-bottom-size = 2
-; border-color = #2F7CC4
+#border-bottom-size = 1
+#border-color = #000000	
 
 modules-left = rofi space bspwm
 modules-center = title

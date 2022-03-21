@@ -1,11 +1,12 @@
 ## Iniciar terminal
 super + Return
-	tilix
+	kitty
 
 
 ## Iniciar Rofi
 alt + d
-	rofi -modi run -show drun -show-icons \-config $HOME/.config/rofi/Monokai.rasi
+	rofi -modi run -show drun -show-icons
+	#rofi -modi run -show drun -show-icons \-config $HOME/.config/rofi/config.rasi
 
 ## Recargar configuracion de atajos de teclado-sxhkd
 super + Escape
