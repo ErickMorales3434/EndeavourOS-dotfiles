@@ -42,5 +42,3 @@ chsh -s $(which zsh)
 
 # Iniciar bspwm
 startx
-
-
