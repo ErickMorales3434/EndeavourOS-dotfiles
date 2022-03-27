@@ -77,10 +77,10 @@ def otros():
             
         
 if __name__ == "__main__":
-    # pacman()
-    # aur()
-    # copyfiles()
-    # services()
+    pacman()
+    aur()
+    copyfiles()
+    services()
     otros()
 
 # # $ eval "$(ssh-agent -s)"
