@@ -10,7 +10,8 @@
 ;==========================================================
 
 [colors]
-background = #00000000
+background-bspwm = #00000000
+background = #000000
 foreground = #FFFFFF
 primary = #FFFFFF
 secondary = #FFFFFF
@@ -22,10 +23,10 @@ enable-ipc = true
 bottom = false
 ;monitor = VGA-1
 foreground = ${colors.foreground}
-background = ${colors.background}
+background = ${colors.background-bspwm}
 
 ;             fonts text
-; fc-list | greo -i nombre de fuente
+; fc-list | grep -i nombre de fuente
 font-0 = "Roboto:size=10.5:style=Bold Italic;2:antialias=true"
 ;             fonts border bar
 ;font-1 = "SFMono Nerd Font:style=Solid:pixelsize=50:antialias=true;0"
@@ -33,26 +34,33 @@ font-0 = "Roboto:size=10.5:style=Bold Italic;2:antialias=true"
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=10;2"
 font-2 = "Font Awesome 5 Brands:pixelsize=10;3"
 font-3 = "Font Awesome 5 Pro:Solid:pixelsize=10"
+font-4 = "Source Code Pro:style=Semibold:size=16;2"
+font-5 = "Wuncon Siji:size=12;2"
+font-6 = Iosevka Nerd Font:style=Medium:size=16;3
 
 wm-restack = bspwm
 override-redirect =false
-fixed-center = false
-width = 100%
+fixed-center = true
+width = 98%
 height = 22
-offset-y = 0
-offset-x = 0
-line-size = 3
+offset-y = 0.5%
+offset-x = 1%
+line-size = 2
+; radius = 10
+;radius-right = 10
+; tray-radius = 10
 tray-position = right
-tray-padding = 5
-tray-detached = false
-tray-background = #00000000
+tray-relative-position = true
+tray-padding = 3
+; tray-detached = false
+; tray-background = #000000
 
-#border-bottom-size = 1
-#border-color = #000000	
+;border-size = 1
+;border-color = #000000	
 
-modules-left = rofi space bspwm
-modules-center = title
-modules-right = space date space memory space network space xkeyboard space powermenu
+modules-left = left1 rofi space bspwm left2
+modules-center = left1 space date space title left2
+modules-right = left1 memory space network space xkeyboard space powermenu left2
 
 ;------------------Inicio de modulos -----------------------
 ;            
@@ -68,23 +76,24 @@ label-active = %name%
 label-active-underline= #C3CFDD
 label-active-padding = 2
 label-active-foreground = ${colors.primary}
-label-active-background = #57AAF2
+label-active-background = #000
 
 label-occupied = %name% 
 label-occupied-foreground = ${colors.secondary}
-label-occupied-background = ${colors.background-bspwm}
+label-occupied-background = #000
 label-occupied-padding = 2
 ; label-occupied-underline= #3883BD
 
 label-urgent = %name%
 label-urgent-padding = 2
 label-urgent-foreground = ${colors.alert}
-label-urgent-background = ${colors.background-bspwm}
+label-urgent-background = #000
 
 label-empty = %name%
 label-empty-padding = 2
 label-empty-foreground = #565759
-label-empty-background = ${colors.background-bspwm}
+label-empty-background = #000
+
 ;---------------------------------------------------------------------
 [module/div]
 type = custom/text
@@ -92,20 +101,31 @@ content-font = 0
 content = 
 content-background = ${colors.background}
 
+[module/left1]
+type = custom/text
+;content-background = #000000
+content-foreground = #000
+content = ""
+
+[module/left2]
+type = custom/text
+;content-background = #000000
+content-foreground = #000
+content = " "
 
 [module/space]
 type = custom/text
 content-font = 0
-content = "     "
-content-background = ${colors.background}
+content = "   "
+content-background = #000
 
 
 [module/close]
 type = custom/text
-content = "◤"
-content-font = 1
+;content = "◤"
+content = ""
 content-foreground = ${colors.background}
-;content-background = ${colors.background}
+content-background = ${colors.background}
 
 [module/open]
 type = custom/text
@@ -149,7 +169,7 @@ type = internal/date
 ; Seconds to sleep between updates
 interval = 1.0
 format = <label>
-;date = %d-%m-%Y%
+date =  %d/%m/%Y%
 ; date = %a,%b %d
 ;time = %H:%M
 time = %I:%M %p
@@ -246,6 +266,12 @@ menu-0-2-exec = bspc quit
 pseudo-transparency = true
 screenchange-reload = true
 
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
 [global/wm]
 margin-top = 0
-margin-bottom = 0
+margin-bottom = 1

@@ -23,7 +23,7 @@ def pacman():
             
 def aur():
     print("\nInstalando programas de aur...\n")
-    apps = ("google-chrome","visual-studio-code-bin")
+    apps = ("google-chrome","visual-studio-code-bin","siji-git")
     for app in apps:
         ejecucion = run(["yay","-S",app,"--noconfirm"],capture_output=True)
         salida = ejecucion.returncode        

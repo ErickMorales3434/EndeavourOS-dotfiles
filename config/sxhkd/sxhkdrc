@@ -129,12 +129,12 @@ alt + g
 	'sudo gparted'
 
 #mostrar y ocultar polybar
-alt + m
+F4
 	{~/.config/polybar/launch.sh ,killall polybar && bspc config top_padding 0}
 	# {~/.config/polybar/launch.sh ,killall polybar && bspc config bottom_padding 0}
 
 	
-#instalar playerctl
+#instalar playettyrctl
 XF86AudioPlay 
 	playerctl play-pause
 XF86AudioPause
