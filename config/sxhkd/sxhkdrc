@@ -16,9 +16,12 @@ super + Escape
 #super + control + Delete
 #	killall vanela; bspc quit
 
-#Recargar Bspwm Bspwmrc
-super + alt + {q,r}
-	bspc {quit,wm -r}
+# #Recargar Bspwm Bspwmrc
+# super + alt + {q,r}
+# 	bspc {quit,wm -r}
+
+F2
+	bspc wm -r
 
 ## Cerrar aplicacion activa
 super + {_,shift + }w
@@ -98,14 +101,13 @@ XF86MonBrightnessDown
 
 
 #--------Atajo de aplicaciones -------------------------
-#firefox
-alt + f
+#google chrome
+alt + g
 	google-chrome-stable
 
 #telegram
 alt + t
 	{telegram-desktop,killall telegram-desktop}
-
 
 #vlc
 alt + v
@@ -124,14 +126,14 @@ alt + e
 alt + o
 	obs
 
-# gparted
-alt + g
-	'sudo gparted'
+# virtual box
+alt + b
+	virtualbox
 
 #mostrar y ocultar polybar
 F4
-	{~/.config/polybar/launch.sh ,killall polybar && bspc config top_padding 0}
-	# {~/.config/polybar/launch.sh ,killall polybar && bspc config bottom_padding 0}
+	{~/.config/polybar/launch.sh ,killall polybar && bspc config bottom_padding 0}
+	# {killall polybar && bspc config top_padding 0, ~/.config/polybar/launch.sh}
 
 	
 #instalar playettyrctl

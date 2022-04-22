@@ -7,7 +7,7 @@ def pacman():
             "xorg-xsetroot", "neovim", "cmus", "lightdm", "lightdm-gtk-greeter", "scrot",
             "lxappearance-gtk3", "virtualbox", "telegram-desktop", "python-pynvim",
             "obs-studio","playerctl", "vlc", "gparted", "volumeicon",
-            "zsh", "ranger", "w3m", "transmission-gtk")
+            "zsh", "ranger", "w3m", "transmission-gtk","network-manager-applet")
 
     for app in apps:
         ejecucion = run(["sudo","pacman","-S",app,"--noconfirm"],capture_output=True)
@@ -34,8 +34,12 @@ def aur():
  
 
 def copyfiles():
-    a = (('config/*','~/.config'),('fonts','~/.fonts'),('themes','~/.themes'),
-         ('ssh','~/.ssh'),('Wall','~/Wall'),('xinitrc','~/.xinitrc'),
+    a = (('config/*','~/.config'),
+         ('fonts','~/.fonts'),
+         ('themes','~/.themes'),
+         ('ssh','~/.ssh'),
+         ('Wall','~/Wall'),
+         ('xinitrc','~/.xinitrc'),
          ('zshrc','~/.zshrc'))
     for b in a:
         ejecucion = run(['cp -ru ~/EndeavourOS-dotfiles/{} {}'.format(b[0],b[1])],shell=True,capture_output=True)
@@ -47,7 +51,7 @@ def copyfiles():
 
 def services():
     print("servicios")
-    servicios = ('lightdm','sshd','gdm')
+    servicios = ('lightdm')
     for servicio in servicios:
         ejecucion = run(['sudo','systemctl','enable',servicio],capture_output=True)
         if ejecucion.returncode == 0:
