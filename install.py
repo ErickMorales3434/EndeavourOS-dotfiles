@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import os
 from subprocess import run
 
 def pacman():
@@ -10,15 +11,17 @@ def pacman():
             "zsh", "ranger", "w3m", "transmission-gtk","network-manager-applet")
 
     for app in apps:
-        ejecucion = run(["sudo","pacman","-S",app,"--noconfirm"],capture_output=True)
-        salida = ejecucion.returncode
-        # out = (ejecucion.stdout).decode("utf-8")
-        if salida == 0:
-            print("[X] ... {} se  ha instalado...".format(app))
+        programs = run(['which',app],capture_output=True)
+        if programs.returncode == 0:
+                print("[X] ... {} Ya está instalado...".format(app))
         else:
-            print("[0] ... {} No se ha instalado".format(app))
+            ejecucion = run(["sudo","pacman","-S",app,"--noconfirm"],capture_output=True)
+            if ejecucion.returncode == 0:
+                print("[X] ... {} se  ha instalado...".format(app))
+            else:
+                print("[0] ... {} No se ha instalado".format(app))
     
-    print("La instalacion se ha completado\n")
+    print("\nLa instalacion se ha completado\n")
          
             
 def aur():
@@ -34,15 +37,16 @@ def aur():
  
 
 def copyfiles():
-    a = (('config/*','~/.config'),
-         ('fonts','~/.fonts'),
-         ('themes','~/.themes'),
-         ('ssh','~/.ssh'),
-         ('Wall','~/Wall'),
-         ('xinitrc','~/.xinitrc'),
-         ('zshrc','~/.zshrc'))
+    path = os.getcwd()
+    a = (('/config/*','~/.config'),
+         ('/fonts','~/.fonts'),
+         ('/themes','~/.themes'),
+         ('/ssh','~/.ssh'),
+         ('/Wall','~/Wall'),
+         ('/xinitrc','~/.xinitrc'),
+         ('/zshrc','~/.zshrc'))
     for b in a:
-        ejecucion = run(['cp -ru ~/EndeavourOS-dotfiles/{} {}'.format(b[0],b[1])],shell=True,capture_output=True)
+        ejecucion = run(['cp -ru {}{} {}'.format(path,b[0],b[1])],shell=True,capture_output=True)
         if ejecucion.returncode == 0:
             print("[X] ... {} copiado a {}".format(b[0],b[1]))
         else:
@@ -50,8 +54,8 @@ def copyfiles():
         
 
 def services():
-    print("servicios")
-    servicios = ('lightdm')
+    print("\nservicios")
+    servicios = ('lightdm','gdm')
     for servicio in servicios:
         ejecucion = run(['sudo','systemctl','enable',servicio],capture_output=True)
         if ejecucion.returncode == 0:
@@ -61,11 +65,11 @@ def services():
             
             
 def otros():
-    run(['curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'],shell=True)
-    run(['sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'],shell=True)
-    run(['EDITOR=code'],shell=True)
+    # run(['curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'],shell=True)
+    # run(['sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'],shell=True)
+    run(['EDITOR=code'])
     run(['chsh -s $(which zsh)'],shell=True)
-    run(['startx'],shell=True)
+    run(['startx'])
     
     
     
@@ -75,17 +79,14 @@ def otros():
 # #install oh-my-zsh
 
 # # Iniciar bspwm
-# startx
-    
-            
-            
-        
+# startx     
 if __name__ == "__main__":
     pacman()
     aur()
     copyfiles()
     services()
-    otros()
+    # otros()
+
 
 # # $ eval "$(ssh-agent -s)"
 
