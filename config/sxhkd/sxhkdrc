@@ -4,8 +4,8 @@ super + Return
 
 
 ## Iniciar Rofi
-alt + d
-	rofi -modi run -show drun -show-icons
+# alt + d
+# 	rofi -modi run -show drun -show-icons
 	#rofi -modi run -show drun -show-icons \-config $HOME/.config/rofi/config.rasi
 
 ## Recargar configuracion de atajos de teclado-sxhkd
@@ -63,8 +63,8 @@ super + {h,v,r}
 
 
 ## Cambia de espacio de trabajo 
-##super + alt + {Left,Right}
-##	bspc desktop -f {prev.local,next.local}
+super + alt + {Left,Right}
+	bspc desktop -f {prev.local,next.local}
 
 #
 # move/resize
@@ -111,7 +111,7 @@ alt + t
 
 #vlc
 alt + v
-    vlc ~/Música
+    vlc /run/media/erick/1DT/LINUX/Música/
 
 #visual studio code
 alt + c
@@ -132,8 +132,8 @@ alt + b
 
 #mostrar y ocultar polybar
 F4
-	{~/.config/polybar/launch.sh ,killall polybar && bspc config bottom_padding 0}
-	# {killall polybar && bspc config top_padding 0, ~/.config/polybar/launch.sh}
+	{killall polybar && bspc config top_padding 0, ~/.config/polybar/launch.sh}
+	# {~/.config/polybar/launch.sh ,killall polybar && bspc config bottom_padding 0}
 
 	
 #instalar playettyrctl
